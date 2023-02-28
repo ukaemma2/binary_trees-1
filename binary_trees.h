@@ -18,13 +18,13 @@
  * @left: Pointer to the left child node
  * @right: Pointer to the right child node
  */
-struct binary_tree_s
+typedef struct binary_tree_s
 {
 	int n;
 	struct binary_tree_s *parent;
 	struct binary_tree_s *left;
 	struct binary_tree_s *right;
-};
+} binary_tree_t;
 typedef struct binary_tree_s binary_tree_t;
 typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
@@ -88,3 +88,5 @@ bst_t *bst_min_val(bst_t *root);
 int btia_helper(const binary_tree_t *tree, int low, int hi);
 int btih_helper(const binary_tree_t *tree);
 void sata_helper(avl_t **root, int *array, size_t lo, size_t hi);
+
+#endif
