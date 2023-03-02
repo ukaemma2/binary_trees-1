@@ -10,14 +10,23 @@
  */
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 {
-	binary_tree_t *new_node;
+	binary_tree_t *new;
 
-	new_node = malloc(sizeof(binary_tree_t));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->n = value;
-	new_node->parent = parent;
-	new_node->left = NULL;
-	new_node->right = NULL;
-	return (new_node);
+	new = malloc(sizeof(*new));
+	if (new == NULL)
+		return (NULL); /* insufficient memory */
+
+	new->n = value;
+	new->left = new->right = NULL;
+	new->parent = parent;
+
+	if (new->parent == NULL) /* root */
+		return new;
+
+	if (new->n < parent->n)
+		parent->left = new;
+	else
+		parent->right = new;
+
+	return new;
 }
